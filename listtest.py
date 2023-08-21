@@ -5,11 +5,11 @@ import zipfile
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
 # from chromedriver_py import binary_path
-import chromedriver_autoinstaller
+# import chromedriver_autoinstaller
 
-chromedriver_autoinstaller.install()
-
+# chromedriver_autoinstaller.install()
 
 def list_files_recursive(directory):
     for root, dirs, files in os.walk(directory):
@@ -23,13 +23,13 @@ def list_files_recursive(directory):
 def scrape_data(url):
     chromedriver_path = '/mount/src/listtest/chromedriver-linux64/chromedriver'
     
-    options = webdriver.ChromeOptions()
-    options.add_argument('--headless')
-    options.binary_location = '/usr/bin/google-chrome'  # Path to Chrome binary on the server
+    # options = webdriver.ChromeOptions()
+    # options.add_argument('--headless')
+    # options.binary_location = '/usr/bin/google-chrome'  # Path to Chrome binary on the server
     
-    service = Service(chromedriver_path)  # Set the path to Chrome WebDriver executable
+    # service = Service(chromedriver_path)  # Set the path to Chrome WebDriver executable
     
-    driver = webdriver.Chrome(service=service, options=options)
+    driver = webdriver.Chrome(ChromeDriverManager().install())
     
     driver.get(url)
     
