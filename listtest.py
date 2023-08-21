@@ -12,9 +12,9 @@ def list_files_recursive(directory):
             st.write(f"{sub_indent}{file}")
 
 st.title('test')
-os.makedirs('/mount/src/litscrape', exist_ok=True)
+os.makedirs('/mount/src/listtest', exist_ok=True)
 chromedriver_url = "https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/116.0.5845.96/linux64/chromedriver-linux64.zip"
-zip_path = "/mount/src/litscrape/chromedriver.zip"  # Set the desired path on the server
+zip_path = "/mount/src/listtest/chromedriver.zip"  # Set the desired path on the server
 wget.download(chromedriver_url, zip_path)
-os.system(f"unzip {zip_path} -d {os.path.dirname(chromedriver_path)}")
+os.system(f"unzip {zip_path} -d {os.path.dirname('/mount/src/listtest')}")
 list_files_recursive('/mount/src/listtest')
