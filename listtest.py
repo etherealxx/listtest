@@ -5,7 +5,7 @@ import zipfile
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from chromedriver_py import binary_path
+# from chromedriver_py import binary_path
 import chromedriver_autoinstaller
 
 chromedriver_autoinstaller.install()
