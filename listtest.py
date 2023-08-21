@@ -61,7 +61,8 @@ chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--headless")  # Run Chrome in headless mode
 
 # Initialize ChromeDriver
-driver = webdriver.Chrome(executable_path=chromedriver_path, options=chrome_options)
+service = Service(chromedriver_path)
+driver = webdriver.Chrome(service=service, options=chrome_options)
 
 try:
     # Open a website
