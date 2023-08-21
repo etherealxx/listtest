@@ -5,6 +5,7 @@ import zipfile
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
+from chromedriver_py import binary_path
 
 def list_files_recursive(directory):
     for root, dirs, files in os.walk(directory):
@@ -53,7 +54,7 @@ os.chmod('/mount/src/listtest/chromedriver-linux64/chromedriver', 0o775)
 # st.write("Scraped Data:")
 # st.write(data)
 
-os.system("sudo apt-get install -y libglib2.0-0=2.50.3-2 libnss3=2:3.26.2-1.1+deb9u1 libgconf-2-4=3.2.6-4+b1 libfontconfig1=2.11.0-6.7+b1")
+os.system("apt-get install -y libglib2.0-0=2.50.3-2 libnss3=2:3.26.2-1.1+deb9u1 libgconf-2-4=3.2.6-4+b1 libfontconfig1=2.11.0-6.7+b1")
 
 # Path to the ChromeDriver executable
 chromedriver_path = "/mount/src/listtest/chromedriver-linux64/chromedriver"
@@ -63,7 +64,7 @@ chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--headless")  # Run Chrome in headless mode
 
 # Initialize ChromeDriver
-service = Service(chromedriver_path)
+service = Service(binary_path)
 driver = webdriver.Chrome(service=service, options=chrome_options)
 
 try:
