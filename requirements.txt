@@ -2,3 +2,4 @@ streamlit
 wget
 selenium
 chromedriver-py
+chromedriver-autoinstaller
