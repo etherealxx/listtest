@@ -20,6 +20,7 @@ zip_path = "/mount/src/listtest/chromedriver.zip"  # Set the desired path on the
 # os.system(f"unzip {zip_path} -d {os.path.dirname('/mount/src/listtest')}")
 with zipfile.ZipFile(zip_path, 'r') as zip_ref:
     # Extract all contents to the target directory
-    zip_ref.extractall('/mount/src/listtest/chromedriver')
+    zip_ref.extractall('/mount/src/listtest')
 
 list_files_recursive('/mount/src/listtest')
+os.chmod('/mount/src/listtest/chromedriver-linux64/chromedriver', 0o775)
