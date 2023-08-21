@@ -1,6 +1,7 @@
 import streamlit as st
 import os
 import wget
+import zipfile
 
 def list_files_recursive(directory):
     for root, dirs, files in os.walk(directory):
@@ -14,7 +15,11 @@ def list_files_recursive(directory):
 st.title('test')
 os.makedirs('/mount/src/listtest', exist_ok=True)
 chromedriver_url = "https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/116.0.5845.96/linux64/chromedriver-linux64.zip"
-zip_path = "/mount/src/listtest/chromedriver.zip"  # Set the desired path on the server
-wget.download(chromedriver_url, zip_path)
-os.system(f"unzip {zip_path} -d {os.path.dirname('/mount/src/listtest')}")
+zip_path = "/mount/src/listtest/listtest/chromedriver.zip"  # Set the desired path on the server
+# wget.download(chromedriver_url, zip_path)
+# os.system(f"unzip {zip_path} -d {os.path.dirname('/mount/src/listtest')}")
+with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+    # Extract all contents to the target directory
+    zip_ref.extractall('/mount/src/listtest/listtest/chromedriver')
+
 list_files_recursive('/mount/src/listtest')
