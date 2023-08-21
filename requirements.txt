@@ -3,3 +3,4 @@ wget
 selenium
 chromedriver-py
 chromedriver-autoinstaller
+chromedriver_autoinstaller
