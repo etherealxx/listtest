@@ -4,6 +4,7 @@ import wget
 import zipfile
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
 
 def list_files_recursive(directory):
     for root, dirs, files in os.walk(directory):
@@ -46,8 +47,30 @@ with zipfile.ZipFile(zip_path, 'r') as zip_ref:
 # list_files_recursive('/mount/src/listtest')
 os.chmod('/mount/src/listtest/chromedriver-linux64/chromedriver', 0o775)
 
-url = "https://psyteam-fc61f.web.app/"  # URL to the website you want to scrape
-data = scrape_data(url)
+# url = "https://psyteam-fc61f.web.app/"  # URL to the website you want to scrape
+# data = scrape_data(url)
 
-st.write("Scraped Data:")
-st.write(data)
+# st.write("Scraped Data:")
+# st.write(data)
+
+# Path to the ChromeDriver executable
+chromedriver_path = "/mount/src/listtest/chromedriver-linux64/chromedriver"
+
+# Set up Chrome options (you can add more options as needed)
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument("--headless")  # Run Chrome in headless mode
+
+# Initialize ChromeDriver
+driver = webdriver.Chrome(executable_path=chromedriver_path, options=chrome_options)
+
+try:
+    # Open a website
+    url = "https://github.com/lushan88a/google_trans_new"  # Replace with the URL you want to open
+    driver.get(url)
+
+    # Print the title of the webpage
+    st.write("Page title:", driver.title)
+
+finally:
+    # Close the browser window
+    driver.quit()
